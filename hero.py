@@ -24,9 +24,11 @@ class Hero():
         """Update the hero's position based on the movement flags."""
         #Update the hero's center value not the rect.
         if self.moving_right:
-            self.center += self.ai_settings.hero_speed_factor
+            if self.moving_right and self.rect.right < self.screen_rect.right:
+                self.center += self.ai_settings.hero_speed_factor
         if self.moving_left:
-            self.center -= self.ai_settings.hero_speed_factor
+            if self.moving_left and self.rect.left > 0:
+                self.center -= self.ai_settings.hero_speed_factor
 
         #Update rect object from self.center
         self.rect.centerx = self.center
