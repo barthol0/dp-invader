@@ -7,16 +7,24 @@ def check_events(hero):
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                hero.moving_right = True
-            elif event.key == pygame.K_LEFT:
-                hero.moving_left = True
-
+            check_keydown_events(event, hero)
         elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_RIGHT:
-                hero.moving_right = False
-            elif event.key == pygame.K_LEFT:
-                hero.moving_left = False
+            check_keyup_events(event, hero)
+
+def check_keydown_events(event, hero):
+    """Respond to keypresses."""
+    if event.key == pygame.K_RIGHT:
+        hero.moving_right = True
+    elif event.key == pygame.K_LEFT:
+        hero.moving_left = True
+
+def check_keyup_events(event, hero):
+    """Respond to keypresses."""
+    if event.key == pygame.K_RIGHT:
+        hero.moving_right = False
+    elif event.key == pygame.K_LEFT:
+        hero.moving_left = False
+
 
 def update_screen(ai_settings, screen, hero):
     """Update images on the screen and flip to the new screen."""
