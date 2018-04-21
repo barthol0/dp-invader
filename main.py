@@ -23,6 +23,12 @@ def run_game():
         gf.check_events(hero, ai_settings, screen, bullets)
         hero.update()
         bullets.update()
+        
+        #Get rid of bullets that have disappeared.
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+        print(len(bullets))
         gf.update_screen(ai_settings, screen, hero, bullets)
 
 run_game()
