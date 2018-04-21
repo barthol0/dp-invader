@@ -20,8 +20,9 @@ def check_keydown_events(event, hero, ai_settings, screen, bullets):
         hero.moving_left = True
     elif event.key == pygame.K_SPACE:
         #Create a new bullet and add it to the bullets group.
-        new_bullet = Bullet(ai_settings, screen, hero)
-        bullets.add(new_bullet)
+        if len(bullets)< ai_settings.bullets_allowed:
+            new_bullet = Bullet(ai_settings, screen, hero)
+            bullets.add(new_bullet)
 
 def check_keyup_events(event, hero):
     """Respond to keypresses."""
