@@ -20,6 +20,8 @@ def check_keydown_events(event, hero, ai_settings, screen, bullets):
         hero.moving_left = True
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, hero, bullets)
+    elif event.key == pygame.K_q:
+        sys.exit()
 
 def check_keyup_events(event, hero):
     """Respond to keypresses."""
